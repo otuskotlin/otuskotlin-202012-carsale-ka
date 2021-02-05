@@ -1,9 +1,8 @@
 plugins {
-    kotlin("jvm") version "1.4.21"
 }
 
-group = "ru.otus.otuskotlin.carsale"
-version = "0.0.1"
+group = rootProject.group
+version = rootProject.version
 
 repositories {
     mavenCentral()
