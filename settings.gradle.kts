@@ -17,4 +17,3 @@ pluginManagement {
     }
 }
 
-include("ok-carsale-be-common")
