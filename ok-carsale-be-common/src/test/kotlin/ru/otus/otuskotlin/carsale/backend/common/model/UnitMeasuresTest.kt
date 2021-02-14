@@ -31,10 +31,11 @@ class UnitMeasuresTest : StringSpec({
 class MetersTest : FreeSpec({
     "convert meters to kilometers" - {
         listOf(
-            Meters(2000) to Kilometers(2.0),
-            Meters(3100) to Kilometers(3.1),
-            Meters(4999) to Kilometers(5.0),
-            Meters(555) to Kilometers(0.6),
+            Meters(2000) to Kilometers(2),
+            Meters(3100) to Kilometers(3),
+            Meters(4999) to Kilometers(5),
+            Meters(555) to Kilometers(1),
+            Meters(499) to Kilometers(0),
         ).forEach { (meters: Meters, expectedKilometers: Kilometers) ->
             "it should convert $meters to $expectedKilometers"{
                 meters.toKilometers() shouldBe expectedKilometers
