@@ -1,6 +1,9 @@
 package ru.otus.otuskotlin.carsale.common.kmp.validation
 
 data class ValidationResult(val errors: List<ValidationError>) {
+
+    constructor(vararg errors: List<ValidationError>) : this(errors.flatMap { it }.toList())
+
     val isSuccess: Boolean
         get() = errors.isEmpty()
 
