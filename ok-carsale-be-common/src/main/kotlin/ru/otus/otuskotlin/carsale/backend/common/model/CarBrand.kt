@@ -1,6 +1,10 @@
 package ru.otus.otuskotlin.carsale.backend.common.model
 
 data class CarBrand (
-    var id: Long?,
-    var name: String,
-)
+    var id: String = "",
+    var name: String = "",
+) {
+    companion object {
+        val NONE = CarBrand()
+    }
+}
