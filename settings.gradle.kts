@@ -7,6 +7,7 @@ pluginManagement {
         kotlin("multiplatform") version kotlinVersion apply false
         kotlin("jvm") version kotlinVersion apply false
         kotlin("js") version kotlinVersion apply false
+        kotlin("plugin.serialization") version kotlinVersion apply false
     }
 
     repositories {
@@ -18,3 +19,4 @@ pluginManagement {
 
 include("ok-carsale-be-common")
 include("ok-carsale-mp-common")
+include("ok-carsale-transport-mp")
