@@ -1,3 +1,6 @@
 package ru.otus.otuskotlin.carsale.transport.model.common
 
-interface Message
+import kotlinx.serialization.Serializable
+
+@Serializable
+abstract class Message

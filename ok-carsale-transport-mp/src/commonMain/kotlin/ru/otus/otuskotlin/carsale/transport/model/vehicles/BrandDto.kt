@@ -2,7 +2,6 @@ package ru.otus.otuskotlin.carsale.transport.model.vehicles
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.modules.PolymorphicModuleBuilder
 import kotlinx.serialization.modules.SerializersModule
 import kotlinx.serialization.modules.polymorphic
 import kotlinx.serialization.modules.subclass
@@ -40,7 +39,7 @@ data class CreateBrandRequest(
     @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
     override val debug: Debug? = null,
     val data: CreatableBrandDto? = null,
-) : Request
+) : Message(), Request
 
 @Serializable
 data class CreateBrandResponse(
@@ -51,7 +50,7 @@ data class CreateBrandResponse(
     override val status: ResponseStatusDto? = null,
     override val debug: Debug? = null,
     val data: BrandDto? = null,
-) : Response
+) : Message(), Response
 
 
 // Read
@@ -63,7 +62,7 @@ data class ReadBrandRequest(
     @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
     override val debug: Debug? = null,
     val id: String? = null,
-) : Request
+) : Message(), Request
 
 @Serializable
 data class ReadBrandResponse(
@@ -74,7 +73,7 @@ data class ReadBrandResponse(
     override val status: ResponseStatusDto? = null,
     override val debug: Debug? = null,
     val data: BrandDto? = null,
-) : Response
+) : Message(), Response
 
 
 // Update
@@ -86,7 +85,7 @@ data class UpdateBrandRequest(
     @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
     override val debug: Debug? = null,
     val data: UpdatableBrandDto? = null,
-) : Request
+) : Message(), Request
 
 @Serializable
 data class UpdateBrandResponse(
@@ -97,7 +96,7 @@ data class UpdateBrandResponse(
     override val status: ResponseStatusDto? = null,
     override val debug: Debug? = null,
     val data: BrandDto? = null,
-) : Response
+) : Message(), Response
 
 
 // Delete
@@ -109,7 +108,7 @@ data class DeleteBrandRequest(
     @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
     override val debug: Debug? = null,
     val id: String? = null,
-) : Request
+) : Message(), Request
 
 @Serializable
 data class DeleteBrandResponse(
@@ -121,7 +120,7 @@ data class DeleteBrandResponse(
     override val debug: Debug? = null,
     val data: BrandDto? = null,
     val deleted: Boolean? = null,
-) : Response
+) : Message(), Response
 
 
 val brandSerializersModule = SerializersModule {
@@ -131,24 +130,15 @@ val brandSerializersModule = SerializersModule {
         subclass(BrandDto::class)
     }
 
-    fun PolymorphicModuleBuilder<Request>.registerRequestSubclasses() {
+    polymorphic(Message::class) {
         subclass(CreateBrandRequest::class)
         subclass(ReadBrandRequest::class)
         subclass(UpdateBrandRequest::class)
         subclass(DeleteBrandRequest::class)
-    }
 
-    fun PolymorphicModuleBuilder<Response>.registerResponseSubclasses() {
         subclass(CreateBrandResponse::class)
         subclass(ReadBrandResponse::class)
         subclass(UpdateBrandResponse::class)
         subclass(DeleteBrandResponse::class)
     }
-
-    polymorphic(Message::class) {
-        registerRequestSubclasses()
-        registerResponseSubclasses()
-    }
-    polymorphic(Request::class) { registerRequestSubclasses() }
-    polymorphic(Response::class) { registerResponseSubclasses() }
 }

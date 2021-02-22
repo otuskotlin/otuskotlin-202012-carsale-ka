@@ -2,7 +2,7 @@ package ru.otus.otuskotlin.carsale.transport.model.common
 
 import kotlinx.datetime.Instant
 
-interface Response : Message {
+interface Response {
     val responseId: String?
     val onRequest: String?
     val endTime: Instant?

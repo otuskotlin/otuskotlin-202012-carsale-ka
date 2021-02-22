@@ -3,15 +3,13 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 import kotlinx.datetime.Instant
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import ru.otus.otuskotlin.carsale.transport.model.AbstractSerializationTest
 import ru.otus.otuskotlin.carsale.transport.model.vehicles.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class AdSerializationTest {
-
-    private val json = Json { prettyPrint = true }
+class AdSerializationTest : AbstractSerializationTest() {
 
     @Test
     fun serializeContactTest() {
@@ -78,38 +76,4 @@ class AdSerializationTest {
         price = 350000,
         created = created
     )
-
-
-
-//    @Test
-//    fun serializeMpRequestTest(){
-//        val jsonRequest = Json {
-//            prettyPrint = true
-//            serializersModule = SerializersModule {
-//
-//                polymorphic(MpMessage::class) {
-//                    subclass(MpRequestDemandCreate::class, MpRequestDemandCreate.serializer())
-//                }
-//
-//            }
-//            classDiscriminator = "type"
-//        }
-//        val dto:MpMessage = MpRequestDemandCreate(
-//            requestId = "create-id",
-//            startTime = "2021-02-13T12:00:00",
-//            createData = MpDemandCreateDto(
-//                title = "demand-2",
-//                description = "some description",
-//                techDets = setOf(TechDetsDto(
-//                    id = "tech-det-id"
-//                ))
-//            )
-//        )
-//        val serializedString = jsonRequest.encodeToString(dto)
-//        println(serializedString)
-//        assertTrue { serializedString.contains("demand-2") }
-//        val deserializedDto = jsonRequest.decodeFromString(MpMessage.serializer(), serializedString)
-//        assertEquals("tech-det-id", (deserializedDto as? MpRequestDemandCreate)?.createData?.techDets?.firstOrNull()?.id)
-//    }
-
 }
