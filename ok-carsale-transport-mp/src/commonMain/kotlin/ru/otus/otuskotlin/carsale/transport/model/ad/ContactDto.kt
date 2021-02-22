@@ -3,7 +3,7 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 import kotlinx.datetime.Instant
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import ru.otus.otuskotlin.carsale.transport.model.common.InstantSerializer
+import ru.otus.otuskotlin.carsale.transport.serializer.InstantSerializer
 
 @Serializable
 @SerialName("ContactDto")

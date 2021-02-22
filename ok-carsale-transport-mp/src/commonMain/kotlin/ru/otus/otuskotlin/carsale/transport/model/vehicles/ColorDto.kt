@@ -8,4 +8,5 @@ enum class ColorDto {
     GREEN,
     GRAY,
     YELLOW,
+    SILVER,
 }

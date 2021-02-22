@@ -4,9 +4,9 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 enum class EngineDto {
-    PETROL,
+    GAZOLINE,
     DIESEL,
-    PETROL_BOOSTED,
+    GAZOLINE_BOOSTED,
     DIESEL_BOOSTED,
     ELECTRIC,
 }
