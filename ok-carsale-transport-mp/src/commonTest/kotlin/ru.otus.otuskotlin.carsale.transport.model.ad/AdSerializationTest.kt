@@ -1,6 +1,8 @@
 package ru.otus.otuskotlin.carsale.transport.model.ad
 
 import kotlinx.datetime.Instant
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ru.otus.otuskotlin.carsale.transport.model.vehicles.*
 import kotlin.test.Test
@@ -16,12 +18,12 @@ class AdSerializationTest {
         val createAsString = "2021-02-21T12:00:00Z"
         val dto = createContact(Instant.parse(createAsString))
 
-        val serializedDto = json.encodeToString(ContactDto.serializer(), dto)
+        val serializedDto = json.encodeToString(dto)
         println(serializedDto)
         assertTrue { serializedDto.contains(createAsString) }
         assertTrue { serializedDto.contains(dto.email!!) }
 
-        val deserializedDto = json.decodeFromString(ContactDto.serializer(), serializedDto)
+        val deserializedDto = json.decodeFromString<ContactDto>(serializedDto)
         println(deserializedDto)
         assertEquals(createAsString, deserializedDto.created.toString())
         assertEquals(dto, deserializedDto)
@@ -32,12 +34,12 @@ class AdSerializationTest {
         val createAsString = "2021-02-21T12:00:00Z"
         val dto = createSaleAd(Instant.parse(createAsString))
 
-        val serializedDto = json.encodeToString(SaleAdDto.serializer(), dto)
+        val serializedDto = json.encodeToString(dto)
         println(serializedDto)
         assertTrue { serializedDto.contains(createAsString) }
         assertTrue { serializedDto.contains(dto.vin!!) }
 
-        val deserializedDto = json.decodeFromString(SaleAdDto.serializer(), serializedDto)
+        val deserializedDto = json.decodeFromString<SaleAdDto>(serializedDto)
         println(deserializedDto)
         assertEquals(createAsString, deserializedDto.created.toString())
         assertEquals(dto, deserializedDto)

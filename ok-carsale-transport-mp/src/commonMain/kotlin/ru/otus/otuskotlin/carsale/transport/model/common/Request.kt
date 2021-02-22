@@ -1,8 +1,10 @@
 package ru.otus.otuskotlin.carsale.transport.model.common
 
-interface Request {
+import kotlinx.datetime.Instant
+
+interface Request : Message {
     val requestId: String?
     val onResponse: String?
-    val startTime: String?
-    val debug: IDebug?
+    val startTime: Instant?
+    val debug: Debug?
 }

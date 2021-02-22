@@ -1,12 +1,11 @@
 package ru.otus.otuskotlin.carsale.transport.model.vehicles
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
+import ru.otus.otuskotlin.carsale.transport.model.common.DataDto
 
 @Serializable
-@SerialName("ModelDto")
 data class ModelDto (
-    val id: String? = null,
+    override val id: String? = null,
     val name: String? = null,
     val brand: BrandDto? = null,
-)
+): DataDto

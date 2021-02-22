@@ -60,3 +60,11 @@ kotlin {
         }
     }
 }
+
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().all {
+    kotlinOptions.freeCompilerArgs += listOf(
+        "-Xopt-in=kotlin.RequiresOptIn",
+        "-Xopt-in=kotlin.OptIn",
+        "-Xopt-in=kotlinx.serialization.ExperimentalSerializationApi"
+    )
+}
