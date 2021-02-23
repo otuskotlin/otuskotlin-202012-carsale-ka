@@ -10,31 +10,32 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-const val BRAND_ID = "1"
-const val BRAND_NAME = "Honda"
+const val MODEL_ID = "2"
+const val MODEL_NAME = "CRV"
 
-class BrandSerializationTest : AbstractSerializationTest() {
+class ModelSerializationTest : AbstractSerializationTest() {
 
     @Test
-    fun serializeBrandTest() {
-        val dto = newBrand()
+    fun serializeModelTest() {
+        val dto = newModel()
 
         val serializedString = encodeToString(dto)
+        assertTrue { serializedString.contains(MODEL_NAME) }
         assertTrue { serializedString.contains(BRAND_NAME) }
 
-        val deserializedDto = decodeFromString<BrandDto>(serializedString)
+        val deserializedDto = decodeFromString<ModelDto>(serializedString)
         assertEquals(dto, deserializedDto)
     }
 
     @Test
-    fun serializeCreateBrandRequestTest() {
+    fun serializeCreateModelRequestTest() {
         val now = Clock.System.now()
         val requestId = newRequestId()
-        val dto: Message = CreateBrandRequest(
+        val dto: Message = CreateModelRequest(
             requestId = requestId,
             startTime = now,
             debug = Debug(WorkModeDto.TEST),
-            data = CreatableBrandDto(BRAND_NAME),
+            data = CreatableModelDto(MODEL_NAME, newBrand()),
         )
         val serializedString = encodeToString(dto)
         assertTrue { serializedString.contains(requestId) }
@@ -45,27 +46,28 @@ class BrandSerializationTest : AbstractSerializationTest() {
     }
 
     @Test
-    fun serializeCreateBrandResponseTest() {
+    fun serializeCreateModelResponseTest() {
         val now = Clock.System.now()
         val requestId = newRequestId()
         val responseId = newResponseId()
-        val dto: Message = CreateBrandResponse(
+        val dto: Message = CreateModelResponse(
             responseId = responseId,
             onRequest = requestId,
             endTime = now,
             errors = listOf(),
             status = ResponseStatusDto.SUCCESS,
             debug = Debug(WorkModeDto.TEST),
-            data = newBrand(),
+            data = newModel(),
         )
         val serializedString = encodeToString(dto)
         assertTrue { serializedString.contains(requestId) }
         assertTrue { serializedString.contains(responseId) }
         assertTrue { serializedString.contains(now.toString()) }
         assertTrue { serializedString.contains(BRAND_NAME) }
+        assertTrue { serializedString.contains(MODEL_NAME) }
         val deserializedDto = decodeFromString<Message>(serializedString)
         assertEquals(dto, deserializedDto)
     }
 }
 
-fun newBrand() = BrandDto(BRAND_ID, BRAND_NAME)
+fun newModel() = ModelDto(MODEL_ID, MODEL_NAME, newBrand())

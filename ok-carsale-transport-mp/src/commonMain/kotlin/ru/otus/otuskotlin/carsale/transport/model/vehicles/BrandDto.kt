@@ -2,9 +2,6 @@ package ru.otus.otuskotlin.carsale.transport.model.vehicles
 
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
-import kotlinx.serialization.modules.SerializersModule
-import kotlinx.serialization.modules.polymorphic
-import kotlinx.serialization.modules.subclass
 import ru.otus.otuskotlin.carsale.transport.model.common.*
 import ru.otus.otuskotlin.carsale.transport.serializer.InstantSerializer
 
@@ -121,24 +118,3 @@ data class DeleteBrandResponse(
     val data: BrandDto? = null,
     val deleted: Boolean? = null,
 ) : Message(), Response
-
-
-val brandSerializersModule = SerializersModule {
-    polymorphic(Brand::class) {
-        subclass(CreatableBrandDto::class)
-        subclass(UpdatableBrandDto::class)
-        subclass(BrandDto::class)
-    }
-
-    polymorphic(Message::class) {
-        subclass(CreateBrandRequest::class)
-        subclass(ReadBrandRequest::class)
-        subclass(UpdateBrandRequest::class)
-        subclass(DeleteBrandRequest::class)
-
-        subclass(CreateBrandResponse::class)
-        subclass(ReadBrandResponse::class)
-        subclass(UpdateBrandResponse::class)
-        subclass(DeleteBrandResponse::class)
-    }
-}
