@@ -6,6 +6,16 @@ import ru.otus.otuskotlin.carsale.transport.serializer.modelSerializersModule
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
+const val REQUEST_ID = "request-id-6057115544696617309"
+const val RESPONSE_ID = "response-id-8266843433733270380"
+const val DATE_TIME = "2021-02-24T18:22:17.517Z"
+
+const val START_TIME_FIELD = "startTime"
+const val END_TIME_FIELD = "endTime"
+const val REQUEST_ID_FIELD = "requestId"
+const val ON_REQUEST_ID_FIELD = "onRequest"
+const val RESPONSE_ID_FIELD = "responseId"
+
 abstract class AbstractSerializationTest {
 
     protected val json = Json {

@@ -19,4 +19,4 @@ pluginManagement {
 
 include("ok-carsale-be-common")
 include("ok-carsale-mp-common")
-include("ok-carsale-transport-mp")
+include("ok-carsale-mp-transport")

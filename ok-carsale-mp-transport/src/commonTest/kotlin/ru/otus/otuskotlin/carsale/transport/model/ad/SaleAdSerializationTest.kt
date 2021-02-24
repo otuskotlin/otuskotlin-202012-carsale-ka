@@ -2,7 +2,7 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
-import ru.otus.otuskotlin.carsale.transport.model.AbstractSerializationTest
+import ru.otus.otuskotlin.carsale.transport.model.*
 import ru.otus.otuskotlin.carsale.transport.model.common.Debug
 import ru.otus.otuskotlin.carsale.transport.model.common.Message
 import ru.otus.otuskotlin.carsale.transport.model.common.ResponseStatusDto
@@ -47,6 +47,8 @@ class SaleAdSerializationTest : AbstractSerializationTest() {
         assertTrue { serializedString.contains(AD_VIN) }
         assertTrue { serializedString.contains(BRAND_NAME) }
         assertTrue { serializedString.contains(CONTACT_EMAIL) }
+        assertTrue { serializedString.contains(START_TIME_FIELD) }
+        assertTrue { serializedString.contains(REQUEST_ID_FIELD) }
         val deserializedDto = decodeFromString<Message>(serializedString)
         assertEquals(dto, deserializedDto)
     }
@@ -72,6 +74,9 @@ class SaleAdSerializationTest : AbstractSerializationTest() {
         assertTrue { serializedString.contains(AD_VIN) }
         assertTrue { serializedString.contains(BRAND_NAME) }
         assertTrue { serializedString.contains(CONTACT_EMAIL) }
+        assertTrue { serializedString.contains(END_TIME_FIELD) }
+        assertTrue { serializedString.contains(ON_REQUEST_ID_FIELD) }
+        assertTrue { serializedString.contains(RESPONSE_ID_FIELD) }
         val deserializedDto = decodeFromString<Message>(serializedString)
         assertEquals(dto, deserializedDto)
     }
