@@ -3,23 +3,12 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import ru.otus.otuskotlin.carsale.transport.model.common.*
-import ru.otus.otuskotlin.carsale.transport.model.vehicles.*
+import ru.otus.otuskotlin.carsale.transport.model.vehicles.CarDto
 import ru.otus.otuskotlin.carsale.transport.serializer.InstantSerializer
 
 private interface SaleAd {
     val contact: ContactDto?
-    val vin: String?
-    val model: ModelDto?
-    val year: Int?
-    val mileage: Int?
-    val carcase: CarcaseDto?
-    val color: ColorDto?
-    val engineVolume: Int?
-    val powerHP: Int?
-    val engine: EngineDto?
-    val gearbox: GearboxDto?
-    val drive: DriveDto?
-    val steeringWheel: SteeringWheelDto?
+    val car: CarDto?
     val price: Int?
     val created: Instant?
 }
@@ -27,18 +16,7 @@ private interface SaleAd {
 @Serializable
 data class CreatableSaleAdDto(
     override val contact: ContactDto? = null,
-    override val vin: String? = null,
-    override val model: ModelDto? = null,
-    override val year: Int? = null,
-    override val mileage: Int? = null,
-    override val carcase: CarcaseDto? = null,
-    override val color: ColorDto? = null,
-    override val engineVolume: Int? = null,
-    override val powerHP: Int? = null,
-    override val engine: EngineDto? = null,
-    override val gearbox: GearboxDto? = null,
-    override val drive: DriveDto? = null,
-    override val steeringWheel: SteeringWheelDto? = null,
+    override val car: CarDto? = null,
     override val price: Int? = null,
     @Serializable(with = InstantSerializer::class) override val created: Instant? = null,
 ): SaleAd, CreatableDataDto
@@ -47,18 +25,7 @@ data class CreatableSaleAdDto(
 data class UpdatableSaleAdDto(
     override val id: String? = null,
     override val contact: ContactDto? = null,
-    override val vin: String? = null,
-    override val model: ModelDto? = null,
-    override val year: Int? = null,
-    override val mileage: Int? = null,
-    override val carcase: CarcaseDto? = null,
-    override val color: ColorDto? = null,
-    override val engineVolume: Int? = null,
-    override val powerHP: Int? = null,
-    override val engine: EngineDto? = null,
-    override val gearbox: GearboxDto? = null,
-    override val drive: DriveDto? = null,
-    override val steeringWheel: SteeringWheelDto? = null,
+    override val car: CarDto? = null,
     override val price: Int? = null,
     @Serializable(with = InstantSerializer::class) override val created: Instant? = null,
 ): SaleAd, UpdatableDataDto
@@ -67,18 +34,7 @@ data class UpdatableSaleAdDto(
 data class SaleAdDto (
     override val id: String? = null,
     override val contact: ContactDto? = null,
-    override val vin: String? = null,
-    override val model: ModelDto? = null,
-    override val year: Int? = null,
-    override val mileage: Int? = null,
-    override val carcase: CarcaseDto? = null,
-    override val color: ColorDto? = null,
-    override val engineVolume: Int? = null,
-    override val powerHP: Int? = null,
-    override val engine: EngineDto? = null,
-    override val gearbox: GearboxDto? = null,
-    override val drive: DriveDto? = null,
-    override val steeringWheel: SteeringWheelDto? = null,
+    override val car: CarDto? = null,
     override val price: Int? = null,
     @Serializable(with = InstantSerializer::class) override val created: Instant? = null,
 ): SaleAd, DataDto

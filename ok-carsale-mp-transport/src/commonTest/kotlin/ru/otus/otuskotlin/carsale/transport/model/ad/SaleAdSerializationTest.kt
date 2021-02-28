@@ -85,36 +85,33 @@ class SaleAdSerializationTest : AbstractSerializationTest() {
 fun newSaleAd(created: Instant) = SaleAdDto(
     id = AD_ID,
     contact = newContact(created),
-    vin = AD_VIN,
-    model = newModel(),
-    year = 1998,
-    mileage = 320500,
-    carcase = CarcaseDto.STATION_WAGON,
-    color = ColorDto.SILVER,
-    engineVolume = 2,
-    powerHP = 128,
-    engine = EngineDto.GAZOLINE,
-    gearbox = GearboxDto.AUTO,
-    drive = DriveDto.PART_TIME_AWD,
-    steeringWheel = SteeringWheelDto.LEFT,
+    car = newCar(),
     price = 350000,
     created = created
 )
 
-fun newCreatableSaleAdDto(created: Instant) = CreatableSaleAdDto(
-    contact = newContact(created),
+fun newEngine() = EngineDto(
+    type = EngineTypeDto.GAZOLINE,
+    volume = 2,
+    powerHP = 128,
+)
+
+fun newCar() = CarDto(
     vin = AD_VIN,
     model = newModel(),
     year = 1998,
     mileage = 320500,
     carcase = CarcaseDto.STATION_WAGON,
     color = ColorDto.SILVER,
-    engineVolume = 2,
-    powerHP = 128,
-    engine = EngineDto.GAZOLINE,
+    engine = newEngine(),
     gearbox = GearboxDto.AUTO,
     drive = DriveDto.PART_TIME_AWD,
     steeringWheel = SteeringWheelDto.LEFT,
+)
+
+fun newCreatableSaleAdDto(created: Instant) = CreatableSaleAdDto(
+    contact = newContact(created),
+    car = newCar(),
     price = 350000,
     created = created
 )
