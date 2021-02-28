@@ -118,3 +118,25 @@ data class DeleteBrandResponse(
     val data: BrandDto? = null,
     val deleted: Boolean? = null,
 ) : Message(), Response
+
+
+// List
+
+@Serializable
+data class ListBrandRequest(
+    override val requestId: String? = null,
+    override val onResponse: String? = null,
+    @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
+    override val debug: Debug? = null,
+) : Message(), Request
+
+@Serializable
+data class ListBrandResponse(
+    override val responseId: String? = null,
+    override val onRequest: String? = null,
+    @Serializable(with = InstantSerializer::class) override val endTime: Instant? = null,
+    override val errors: List<ErrorDto>? = null,
+    override val status: ResponseStatusDto? = null,
+    override val debug: Debug? = null,
+    val data: List<BrandDto>? = null,
+) : Message(), Response

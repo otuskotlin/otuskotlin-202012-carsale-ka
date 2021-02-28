@@ -1,0 +1,48 @@
+### list
+POST http://localhost:8080/brand/list
+Content-Type: application/json
+
+{
+  "requestId": "req-1"
+}
+
+### create
+POST http://localhost:8080/brand/create
+Content-Type: application/json
+
+{
+  "requestId": "req-2",
+  "data": {
+    "name": "Toyota"
+  }
+}
+
+### read
+POST http://localhost:8080/brand/read
+Content-Type: application/json
+
+{
+  "requestId": "req-3",
+  "id": "1"
+}
+
+### update
+POST http://localhost:8080/brand/update
+Content-Type: application/json
+
+{
+  "requestId": "req-4",
+  "data": {
+    "id": "1",
+    "name": "Subaru"
+  }
+}
+
+### delete
+POST http://localhost:8080/brand/delete
+Content-Type: application/json
+
+{
+  "requestId": "req-5",
+  "id": "1"
+}

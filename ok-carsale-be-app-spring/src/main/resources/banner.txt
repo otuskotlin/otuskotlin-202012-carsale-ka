@@ -1,0 +1,10 @@
+                                        .__
+  ____  _____   _______   ___________   |  |    ____           _____   ______  ______
+_/ ___\ \__  \  \_  __ \ /  ___/\__  \  |  |  _/ __ \   ______ \__  \  \____ \ \____ \
+\  \___  / __ \_ |  | \/ \___ \  / __ \_|  |__\  ___/  /_____/  / __ \_|  |_> >|  |_> >
+ \___  >(____  / |__|   /____  >(____  /|____/ \___  >         (____  /|   __/ |   __/
+     \/      \/              \/      \/            \/               \/ |__|    |__|
+
+ :: ${AnsiColor.BRIGHT_MAGENTA}Spring Boot${AnsiColor.DEFAULT} :: ${AnsiColor.GREEN}${spring-boot.formatted-version}${AnsiColor.DEFAULT}
+ :: ${AnsiColor.BRIGHT_MAGENTA}${application.title}${AnsiColor.DEFAULT} :: ${AnsiColor.GREEN}${application.formatted-version}${AnsiColor.DEFAULT}
+        

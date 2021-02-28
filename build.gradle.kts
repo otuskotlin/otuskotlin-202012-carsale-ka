@@ -14,5 +14,6 @@ allprojects {
         jcenter()
         maven { url = uri("https://dl.bintray.com/kotlin/kotlin-js-wrappers") }
         maven { url = uri("https://kotlin.bintray.com/kotlinx") } // soon will be just jcenter()
+        maven { url = uri("https://repo.spring.io/milestone") }
     }
 }
