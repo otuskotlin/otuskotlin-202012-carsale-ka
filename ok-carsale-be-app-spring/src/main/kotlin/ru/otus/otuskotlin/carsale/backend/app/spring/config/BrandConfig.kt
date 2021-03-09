@@ -1,6 +1,7 @@
 package ru.otus.otuskotlin.carsale.backend.app.spring.config
 
 import org.springframework.fu.kofu.configuration
+import org.springframework.http.MediaType
 import org.springframework.web.servlet.function.router
 import ru.otus.otuskotlin.carsale.backend.app.spring.controller.BrandController
 
@@ -12,9 +13,13 @@ val brandConfig = configuration {
 }
 
 fun brandRoutes(brandController: BrandController) = router {
-    POST("/brand/list", brandController::list)
-    POST("/brand/create", brandController::create)
-    POST("/brand/read", brandController::read)
-    POST("/brand/update", brandController::update)
-    POST("/brand/delete", brandController::delete)
+    accept(MediaType.APPLICATION_JSON).nest {
+        path("/brand").nest {
+            POST("/list", brandController::list)
+            POST("/create", brandController::create)
+            POST("/read", brandController::read)
+            POST("/update", brandController::update)
+            POST("/delete", brandController::delete)
+        }
+    }
 }

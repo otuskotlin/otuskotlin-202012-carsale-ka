@@ -122,3 +122,25 @@ data class DeleteModelResponse(
     val data: ModelDto? = null,
     val deleted: Boolean? = null,
 ) : Message(), Response
+
+
+// List
+
+@Serializable
+data class ListModelRequest(
+    override val requestId: String? = null,
+    override val onResponse: String? = null,
+    @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
+    override val debug: Debug? = null,
+) : Message(), Request
+
+@Serializable
+data class ListModelResponse(
+    override val responseId: String? = null,
+    override val onRequest: String? = null,
+    @Serializable(with = InstantSerializer::class) override val endTime: Instant? = null,
+    override val errors: List<ErrorDto>? = null,
+    override val status: ResponseStatusDto? = null,
+    override val debug: Debug? = null,
+    val data: List<ModelDto>? = null,
+) : Message(), Response

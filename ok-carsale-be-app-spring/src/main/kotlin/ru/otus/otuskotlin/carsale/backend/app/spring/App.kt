@@ -4,6 +4,7 @@ import org.springframework.boot.logging.LogLevel
 import org.springframework.fu.kofu.webApplication
 import org.springframework.fu.kofu.webmvc.webMvc
 import ru.otus.otuskotlin.carsale.backend.app.spring.config.brandConfig
+import ru.otus.otuskotlin.carsale.backend.app.spring.config.modelConfig
 
 private val webApp = webApplication {
     logging {
@@ -20,6 +21,7 @@ private val webApp = webApplication {
     }
 
     enable(brandConfig)
+    enable(modelConfig)
 }
 
 fun main() {

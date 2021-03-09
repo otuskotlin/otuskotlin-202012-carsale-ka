@@ -16,6 +16,7 @@ dependencies {
     val serializationVersion: String by project
     val datetimeVersion: String by project
     val springFuVersion: String by project
+    val coroutinesVersion: String by project
 
     implementation(project(":ok-carsale-mp-transport"))
     implementation(project(":ok-carsale-mp-common"))
@@ -27,6 +28,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
     implementation("org.jetbrains.kotlinx:kotlinx-datetime:$datetimeVersion")
     implementation("org.springframework:spring-webmvc")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
 
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.springframework.boot:spring-boot-starter-test")
