@@ -26,4 +26,4 @@ include("ok-carsale-be-common")
 include("ok-carsale-mp-common")
 include("ok-carsale-mp-transport")
 
-include("ok-carsale-be-app-spring")
+include("ok-carsale-be-app-kofu")
