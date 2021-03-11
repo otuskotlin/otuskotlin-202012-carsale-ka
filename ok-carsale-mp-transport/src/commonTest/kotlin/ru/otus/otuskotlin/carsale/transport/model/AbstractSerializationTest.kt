@@ -1,8 +1,7 @@
 package ru.otus.otuskotlin.carsale.transport.model
 
-import kotlinx.serialization.json.Json
 import kotlinx.serialization.serializer
-import ru.otus.otuskotlin.carsale.transport.serializer.modelSerializersModule
+import ru.otus.otuskotlin.carsale.transport.serializer.jsonConfig
 import kotlin.math.absoluteValue
 import kotlin.random.Random
 
@@ -18,10 +17,7 @@ const val RESPONSE_ID_FIELD = "responseId"
 
 abstract class AbstractSerializationTest {
 
-    protected val json = Json {
-        prettyPrint = true
-        serializersModule = modelSerializersModule
-    }
+    protected val json = jsonConfig
 
     protected fun newRequestId() = "request-id-${Random.nextLong().absoluteValue.toString()}"
     protected fun newResponseId() = "response-id-${Random.nextLong().absoluteValue.toString()}"

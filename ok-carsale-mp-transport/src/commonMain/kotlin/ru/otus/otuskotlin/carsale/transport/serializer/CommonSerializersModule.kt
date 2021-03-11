@@ -17,6 +17,8 @@ val modelSerializersModule = SerializersModule {
         subclass(UpdateBrandResponse::class)
         subclass(DeleteBrandRequest::class)
         subclass(DeleteBrandResponse::class)
+        subclass(ListBrandRequest::class)
+        subclass(ListBrandResponse::class)
 
         subclass(CreateModelRequest::class)
         subclass(CreateModelResponse::class)
@@ -26,6 +28,8 @@ val modelSerializersModule = SerializersModule {
         subclass(UpdateModelResponse::class)
         subclass(DeleteModelRequest::class)
         subclass(DeleteModelResponse::class)
+        subclass(ListModelRequest::class)
+        subclass(ListModelResponse::class)
 
         subclass(CreateContactRequest::class)
         subclass(CreateContactResponse::class)
@@ -35,6 +39,8 @@ val modelSerializersModule = SerializersModule {
         subclass(UpdateContactResponse::class)
         subclass(DeleteContactRequest::class)
         subclass(DeleteContactResponse::class)
+        subclass(ListContactRequest::class)
+        subclass(ListContactResponse::class)
 
         subclass(CreateSaleAdRequest::class)
         subclass(CreateSaleAdResponse::class)
@@ -44,5 +50,7 @@ val modelSerializersModule = SerializersModule {
         subclass(UpdateSaleAdResponse::class)
         subclass(DeleteSaleAdRequest::class)
         subclass(DeleteSaleAdResponse::class)
+        subclass(ListSaleAdRequest::class)
+        subclass(ListSaleAdResponse::class)
     }
 }

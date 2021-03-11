@@ -3,6 +3,8 @@ plugins {
     kotlin("jvm") apply false
     kotlin("js") apply false
     kotlin("plugin.serialization") apply false
+
+    id("com.bmuschko.docker-java-application") apply false
 }
 
 group = "ru.otus.otuskotlin.carsale"

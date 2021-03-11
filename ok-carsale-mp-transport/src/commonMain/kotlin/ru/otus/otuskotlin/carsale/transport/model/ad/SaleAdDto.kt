@@ -3,6 +3,7 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import ru.otus.otuskotlin.carsale.transport.model.common.*
+import ru.otus.otuskotlin.carsale.transport.model.vehicles.BrandDto
 import ru.otus.otuskotlin.carsale.transport.model.vehicles.CarDto
 import ru.otus.otuskotlin.carsale.transport.serializer.InstantSerializer
 
@@ -130,4 +131,26 @@ data class DeleteSaleAdResponse(
     override val debug: Debug? = null,
     val data: SaleAdDto? = null,
     val deleted: Boolean? = null,
+) : Message(), Response
+
+
+// List
+
+@Serializable
+data class ListSaleAdRequest(
+    override val requestId: String? = null,
+    override val onResponse: String? = null,
+    @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
+    override val debug: Debug? = null,
+) : Message(), Request
+
+@Serializable
+data class ListSaleAdResponse(
+    override val responseId: String? = null,
+    override val onRequest: String? = null,
+    @Serializable(with = InstantSerializer::class) override val endTime: Instant? = null,
+    override val errors: List<ErrorDto>? = null,
+    override val status: ResponseStatusDto? = null,
+    override val debug: Debug? = null,
+    val data: List<SaleAdDto>? = null,
 ) : Message(), Response

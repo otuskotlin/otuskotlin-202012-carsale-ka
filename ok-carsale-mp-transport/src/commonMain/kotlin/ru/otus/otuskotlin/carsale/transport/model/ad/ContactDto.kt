@@ -3,6 +3,7 @@ package ru.otus.otuskotlin.carsale.transport.model.ad
 import kotlinx.datetime.Instant
 import kotlinx.serialization.Serializable
 import ru.otus.otuskotlin.carsale.transport.model.common.*
+import ru.otus.otuskotlin.carsale.transport.model.vehicles.ModelDto
 import ru.otus.otuskotlin.carsale.transport.serializer.InstantSerializer
 
 private interface Contact {
@@ -24,9 +25,9 @@ data class CreatableContactDto(
 data class UpdatableContactDto(
     override val id: String? = null,
     override val name: String? = null,
-    override val phone: String?,
-    override val email: String?,
-    @Serializable(with = InstantSerializer::class) override val created: Instant?,
+    override val phone: String? = null,
+    override val email: String? = null,
+    @Serializable(with = InstantSerializer::class) override val created: Instant? = null,
 ): Contact, UpdatableDataDto
 
 @Serializable
@@ -129,4 +130,26 @@ data class DeleteContactResponse(
     override val debug: Debug? = null,
     val data: ContactDto? = null,
     val deleted: Boolean? = null,
+) : Message(), Response
+
+
+// List
+
+@Serializable
+data class ListContactRequest(
+    override val requestId: String? = null,
+    override val onResponse: String? = null,
+    @Serializable(with = InstantSerializer::class) override val startTime: Instant? = null,
+    override val debug: Debug? = null,
+) : Message(), Request
+
+@Serializable
+data class ListContactResponse(
+    override val responseId: String? = null,
+    override val onRequest: String? = null,
+    @Serializable(with = InstantSerializer::class) override val endTime: Instant? = null,
+    override val errors: List<ErrorDto>? = null,
+    override val status: ResponseStatusDto? = null,
+    override val debug: Debug? = null,
+    val data: List<ContactDto>? = null,
 ) : Message(), Response

@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.carsale.backend.app.spring.controller
+package ru.otus.otuskotlin.carsale.backend.app.kofu.controller
 
 import kotlinx.datetime.Clock
 import org.springframework.web.servlet.function.ServerRequest
@@ -6,63 +6,63 @@ import org.springframework.web.servlet.function.ServerResponse
 import ru.otus.otuskotlin.carsale.transport.model.common.ResponseStatusDto
 import ru.otus.otuskotlin.carsale.transport.model.vehicles.*
 
-class ModelController: AbstractController() {
+class BrandController: AbstractController() {
 
     fun list(serverRequest: ServerRequest): ServerResponse =
-        serverRequest.handle { request: ListModelRequest ->
-            ListModelResponse(
+        serverRequest.handle { request: ListBrandRequest ->
+            ListBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = mockModelList(),
+                data = mockBrandList(),
             )
         }
 
     fun create(serverRequest: ServerRequest): ServerResponse =
-        serverRequest.handle { request: CreateModelRequest ->
-            CreateModelResponse(
+        serverRequest.handle { request: CreateBrandRequest ->
+
+            CreateBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(mockModelList().size.inc().toString(), request.data!!.name, request.data!!.brand),
+                data = BrandDto(mockBrandList().size.inc().toString(), request.data!!.name),
             )
         }
 
     fun read(serverRequest: ServerRequest): ServerResponse =
-        serverRequest.handle { request: ReadModelRequest ->
-            ReadModelResponse(
+        serverRequest.handle { request: ReadBrandRequest ->
+            ReadBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.id, "Jazz", mockHonda()),
+                data = BrandDto(request.id, "BMW"),
             )
         }
 
     fun update(serverRequest: ServerRequest): ServerResponse =
-        serverRequest.handle { request: UpdateModelRequest ->
-            UpdateModelResponse(
+        serverRequest.handle { request: UpdateBrandRequest ->
+            UpdateBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.data!!.id, request.data!!.name, mockHonda()),
+                data = BrandDto(request.data!!.id, request.data!!.name),
             )
         }
 
     fun delete(serverRequest: ServerRequest): ServerResponse =
-        serverRequest.handle { request: DeleteModelRequest ->
-            DeleteModelResponse(
+        serverRequest.handle { request: DeleteBrandRequest ->
+            DeleteBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.id, "Jazz", mockHonda()),
+                data = BrandDto(request.id, "VW"),
                 deleted = true,
             )
         }
 }
 
-fun mockModelList() = mutableListOf(mockCRV(), mockCivic(), mockAccord(), mockCorolla(), mockCamry())
-fun mockCRV() = ModelDto("1", "CRV", mockHonda())
-fun mockCivic() = ModelDto("2", "Civic", mockHonda())
-fun mockAccord() = ModelDto("3", "Accord", mockHonda())
-fun mockCorolla() = ModelDto("4", "Corolla", mockToyota())
-fun mockCamry() = ModelDto("5", "Camry", mockToyota())
+fun mockBrandList() = mutableListOf(mockHonda(), mockToyota(), mockMazda(), mockNissan())
+fun mockHonda() = BrandDto("1", "Honda")
+fun mockToyota() = BrandDto("2", "Toyota")
+fun mockMazda() = BrandDto("3", "Mazda")
+fun mockNissan() = BrandDto("4", "Nissan")

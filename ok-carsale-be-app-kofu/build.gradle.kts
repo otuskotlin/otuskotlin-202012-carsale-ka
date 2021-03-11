@@ -18,6 +18,7 @@ dependencies {
     val springFuVersion: String by project
     val coroutinesVersion: String by project
 
+    implementation(project(":ok-carsale-be-common"))
     implementation(project(":ok-carsale-mp-transport"))
     implementation(project(":ok-carsale-mp-common"))
 

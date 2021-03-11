@@ -1,4 +1,4 @@
-package ru.otus.otuskotlin.carsale.backend.app.spring.controller
+package ru.otus.otuskotlin.carsale.backend.app.kofu.controller
 
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.InternalSerializationApi

@@ -3,6 +3,7 @@ POST http://localhost:8080/brand/list
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.ListBrandRequest",
   "requestId": "req-1"
 }
 
@@ -11,6 +12,7 @@ POST http://localhost:8080/brand/create
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.CreateBrandRequest",
   "requestId": "req-2",
   "data": {
     "name": "Toyota"
@@ -22,6 +24,7 @@ POST http://localhost:8080/brand/read
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.ReadBrandRequest",
   "requestId": "req-3",
   "id": "1"
 }
@@ -31,6 +34,7 @@ POST http://localhost:8080/brand/update
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.UpdateBrandRequest",
   "requestId": "req-4",
   "data": {
     "id": "1",
@@ -43,6 +47,7 @@ POST http://localhost:8080/brand/delete
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.DeleteBrandRequest",
   "requestId": "req-5",
   "id": "1"
 }

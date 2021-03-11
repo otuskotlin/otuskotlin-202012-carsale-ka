@@ -1,10 +1,10 @@
-package ru.otus.otuskotlin.carsale.backend.app.spring
+package ru.otus.otuskotlin.carsale.backend.app.kofu
 
 import org.springframework.boot.logging.LogLevel
 import org.springframework.fu.kofu.webApplication
 import org.springframework.fu.kofu.webmvc.webMvc
-import ru.otus.otuskotlin.carsale.backend.app.spring.config.brandConfig
-import ru.otus.otuskotlin.carsale.backend.app.spring.config.modelConfig
+import ru.otus.otuskotlin.carsale.backend.app.kofu.config.brandConfig
+import ru.otus.otuskotlin.carsale.backend.app.kofu.config.modelConfig
 
 private val webApp = webApplication {
     logging {

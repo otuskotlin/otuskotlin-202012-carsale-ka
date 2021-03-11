@@ -1,0 +1,55 @@
+### list
+POST http://localhost:8080/contact/list
+Content-Type: application/json
+
+{
+  "type": "ru.otus.otuskotlin.carsale.transport.model.ad.ListContactRequest",
+  "requestId": "req-1"
+}
+
+### create
+POST http://localhost:8080/contact/create
+Content-Type: application/json
+
+{
+  "type": "ru.otus.otuskotlin.carsale.transport.model.ad.CreateContactRequest",
+  "requestId": "req-2",
+  "data": {
+    "name": "Новый пользователь",
+    "phone": "79001112233",
+    "email": "new.person@mail.ru"
+  }
+}
+
+### read
+POST http://localhost:8080/contact/read
+Content-Type: application/json
+
+{
+  "type": "ru.otus.otuskotlin.carsale.transport.model.ad.ReadContactRequest",
+  "requestId": "req-3",
+  "id": "1"
+}
+
+### update
+POST http://localhost:8080/contact/update
+Content-Type: application/json
+
+{
+  "type": "ru.otus.otuskotlin.carsale.transport.model.ad.UpdateContactRequest",
+  "requestId": "req-4",
+  "data": {
+    "id": "1",
+    "name": "Иванов Иван Иванович"
+  }
+}
+
+### delete
+POST http://localhost:8080/contact/delete
+Content-Type: application/json
+
+{
+  "type": "ru.otus.otuskotlin.carsale.transport.model.ad.DeleteContactRequest",
+  "requestId": "req-5",
+  "id": "1"
+}

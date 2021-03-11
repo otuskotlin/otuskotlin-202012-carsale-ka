@@ -3,6 +3,7 @@ POST http://localhost:8080/model/list
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.ListModelRequest",
   "requestId": "req-1"
 }
 
@@ -11,6 +12,7 @@ POST http://localhost:8080/model/create
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.CreateModelRequest",
   "requestId": "req-2",
   "data": {
     "name": "Pilot",
@@ -26,6 +28,7 @@ POST http://localhost:8080/model/read
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.ReadModelRequest",
   "requestId": "req-3",
   "id": "1"
 }
@@ -35,6 +38,7 @@ POST http://localhost:8080/model/update
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.UpdateModelRequest",
   "requestId": "req-4",
   "data": {
     "id": "1",
@@ -47,6 +51,7 @@ POST http://localhost:8080/model/delete
 Content-Type: application/json
 
 {
+  "type": "ru.otus.otuskotlin.carsale.transport.model.vehicles.DeleteModelRequest",
   "requestId": "req-5",
   "id": "1"
 }

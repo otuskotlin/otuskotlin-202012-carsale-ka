@@ -1,9 +1,9 @@
-package ru.otus.otuskotlin.carsale.backend.app.spring.config
+package ru.otus.otuskotlin.carsale.backend.app.kofu.config
 
 import org.springframework.fu.kofu.configuration
 import org.springframework.http.MediaType
 import org.springframework.web.servlet.function.router
-import ru.otus.otuskotlin.carsale.backend.app.spring.controller.ModelController
+import ru.otus.otuskotlin.carsale.backend.app.kofu.controller.ModelController
 
 val modelConfig = configuration {
     beans {
