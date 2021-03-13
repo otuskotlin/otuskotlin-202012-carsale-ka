@@ -22,12 +22,14 @@ class BrandController: AbstractController() {
 
     suspend fun create(pipelineContext: PipelineContext<Unit, ApplicationCall>) =
         pipelineContext.handle { request: CreateBrandRequest ->
-
             CreateBrandResponse(
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = BrandDto(mockBrandList.size.inc().toString(), request.data!!.name),
+                data = BrandDto(
+                    id = mockBrandList.size.inc().toString(),
+                    name = request.data!!.name
+                ),
             )
         }
 
@@ -37,7 +39,10 @@ class BrandController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = BrandDto(request.id ?: throw IllegalArgumentException("id is empty"), mockHonda.name),
+                data = BrandDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = mockHonda.name
+                ),
             )
         }
 
@@ -47,7 +52,10 @@ class BrandController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = BrandDto(request.data!!.id, request.data!!.name),
+                data = BrandDto(
+                    id = request.data!!.id ?: throw IllegalArgumentException("id is empty"),
+                    name = request.data!!.name
+                ),
             )
         }
 
@@ -57,7 +65,10 @@ class BrandController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = BrandDto(request.id, "VW"),
+                data = BrandDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = "VW"
+                ),
                 deleted = true,
             )
         }

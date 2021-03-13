@@ -16,12 +16,6 @@ abstract class AbstractControllerTest {
 
     val log: Logger = LoggerFactory.getLogger(this::class.java)
 
-    private inline fun <reified T: Message> TestApplicationRequest.setBody(request: T) {
-        val bodyString = jsonConfig.encodeToString(Message.serializer(), request)
-        setBody(bodyString)
-        addHeader("Content-Type", "application/json")
-    }
-
     @OptIn(InternalSerializationApi::class)
     inline fun <reified T : Message, reified R : Message> handleRequest(
         method: HttpMethod, uri: String, request: T, crossinline block: suspend (R, TestApplicationCall) -> Unit): Unit {

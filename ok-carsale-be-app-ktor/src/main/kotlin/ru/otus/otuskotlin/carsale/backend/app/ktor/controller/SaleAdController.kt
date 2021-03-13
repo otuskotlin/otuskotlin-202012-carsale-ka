@@ -29,7 +29,7 @@ class SaleAdController: AbstractController() {
                 data = SaleAdDto(
                     id = mockContactList.size.inc().toString(),
                     contact = ContactDto(
-                        id = data.contact!!.id,
+                        id = data.contact!!.id ?: throw IllegalArgumentException("contactId is empty"),
                         name = mockContact1.name,
                         phone = mockContact1.phone,
                         email = mockContact1.email,
@@ -48,7 +48,7 @@ class SaleAdController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = newSaleAd(request.id!!),
+                data = newSaleAd(request.id ?: throw IllegalArgumentException("id is empty")),
             )
         }
 
@@ -61,7 +61,7 @@ class SaleAdController: AbstractController() {
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
                 data = SaleAdDto(
-                    id = data.id!!,
+                    id = data!!.id ?: throw IllegalArgumentException("id is empty"),
                     contact = mockContact1,
                     car = data.car!!,
                     price = data.price!!,
@@ -76,7 +76,7 @@ class SaleAdController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = newSaleAd(request.id!!),
+                data = newSaleAd(request.id ?: throw IllegalArgumentException("id is empty")),
                 deleted = true,
             )
         }

@@ -26,7 +26,7 @@ abstract class AbstractController {
             log.debug("Request: {}", request)
 
         } catch (e: Exception) {
-            returnError(e, ResponseStatusDto.BAD_REQUEST, request?.requestId, classDiscriminator)
+            respondError(e, ResponseStatusDto.BAD_REQUEST, request?.requestId, classDiscriminator)
         }
 
         if (request == null) {
@@ -39,11 +39,11 @@ abstract class AbstractController {
             call.respond(response)
 
         } catch (e: Exception) {
-            returnError(e, ResponseStatusDto.INTERNAL_SERVER_ERROR, request?.requestId, classDiscriminator)
+            respondError(e, ResponseStatusDto.INTERNAL_SERVER_ERROR, request?.requestId, classDiscriminator)
         }
     }
 
-    suspend inline fun PipelineContext<Unit, ApplicationCall>.returnError(
+    suspend inline fun PipelineContext<Unit, ApplicationCall>.respondError(
         e: Exception, status: ResponseStatusDto, requestId: String?, classDiscriminator: String) {
 
         log.error("Error:", e)

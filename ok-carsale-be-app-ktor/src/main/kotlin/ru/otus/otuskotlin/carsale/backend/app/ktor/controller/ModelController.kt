@@ -24,7 +24,11 @@ class ModelController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(mockModelList.size.inc().toString(), request.data!!.name, request.data!!.brand),
+                data = ModelDto(
+                    id = mockModelList.size.inc().toString(),
+                    name = request.data!!.name,
+                    brand = request.data!!.brand
+                ),
             )
         }
 
@@ -34,7 +38,11 @@ class ModelController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.id, "Jazz", mockHonda),
+                data = ModelDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = "Jazz",
+                    brand = mockHonda
+                ),
             )
         }
 
@@ -44,7 +52,11 @@ class ModelController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.data!!.id, request.data!!.name, mockHonda),
+                data = ModelDto(
+                    id = request.data!!.id ?: throw IllegalArgumentException("id is empty"),
+                    name = request.data!!.name,
+                    brand = mockHonda
+                ),
             )
         }
 
@@ -54,8 +66,12 @@ class ModelController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ModelDto(request.id, "Jazz", mockHonda),
                 deleted = true,
+                data = ModelDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = "Jazz",
+                    brand = mockHonda
+                ),
             )
         }
 }

@@ -25,7 +25,13 @@ class ContactController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ContactDto(mockContactList.size.inc().toString(), data.name, data.phone, data.email, Clock.System.now()),
+                data = ContactDto(
+                    id = mockContactList.size.inc().toString(),
+                    name = data.name,
+                    phone = data.phone,
+                    email = data.email,
+                    created = Clock.System.now()
+                ),
             )
         }
 
@@ -36,7 +42,13 @@ class ContactController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ContactDto(request.id, data.name, data.phone, data.email, data.created),
+                data = ContactDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = data.name,
+                    phone = data.phone,
+                    email = data.email,
+                    created = data.created
+                ),
             )
         }
 
@@ -48,11 +60,13 @@ class ContactController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ContactDto(data.id!!,
-                    data.name ?: originalData.name,
-                    data.phone ?: originalData.phone,
-                    data.email ?: originalData.email,
-                    originalData.created),
+                data = ContactDto(
+                    id = data!!.id ?: throw IllegalArgumentException("id is empty"),
+                    name = data.name ?: originalData.name,
+                    phone = data.phone ?: originalData.phone,
+                    email = data.email ?: originalData.email,
+                    created = originalData.created
+                ),
             )
         }
 
@@ -63,7 +77,13 @@ class ContactController: AbstractController() {
                 onRequest = request.requestId,
                 status = ResponseStatusDto.SUCCESS,
                 endTime = Clock.System.now(),
-                data = ContactDto(request.id, data.name, data.phone, data.email, data.created),
+                data = ContactDto(
+                    id = request.id ?: throw IllegalArgumentException("id is empty"),
+                    name = data.name,
+                    phone = data.phone,
+                    email = data.email,
+                    created = data.created
+                ),
                 deleted = true,
             )
         }

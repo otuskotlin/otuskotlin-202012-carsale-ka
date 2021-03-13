@@ -40,5 +40,5 @@ tasks.withType<Test> { useJUnitPlatform() }
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> { kotlinOptions.jvmTarget = "11" }
 
 tasks.bootBuildImage {
-    imageName = "${project.name}:${rootProject.version}"
+    imageName = "${project.name}:${project.version}"
 }
